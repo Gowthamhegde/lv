@@ -5,6 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaHeart, FaStar, FaQuoteLeft } from 'react-icons/fa';
 import PhotoGallery from './components/PhotoGallery';
 import Fireworks from './components/Fireworks';
+import RomanticBackground from './components/RomanticBackground';
+import AnimatedHeader from './components/AnimatedHeader';
+import Footer from './components/Footer';
+import ThreeDLuffy from './components/ThreeDLuffy';
 
 const theme = createTheme({
   palette: {
@@ -18,6 +22,17 @@ const theme = createTheme({
   typography: {
     fontFamily: '"Playfair Display", serif',
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          fontWeight: 'bold',
+          letterSpacing: '1px'
+        }
+      }
+    }
+  }
 });
 
 const fadeInUp = {
@@ -56,6 +71,8 @@ function App() {
           }
         }}
       >
+        <ThreeDLuffy />
+        <RomanticBackground />
         <AnimatePresence>
           {showCelebration && <Fireworks />}
         </AnimatePresence>
@@ -68,39 +85,23 @@ function App() {
               background: 'rgba(255, 255, 255, 0.95)',
               borderRadius: '20px',
               backdropFilter: 'blur(10px)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+              position: 'relative',
+              overflow: 'hidden',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'linear-gradient(45deg, rgba(255,64,129,0.05) 0%, rgba(245,0,87,0.05) 100%)',
+                zIndex: 0
+              }
             }}
           >
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-              transition={{ duration: 0.8 }}
-            >
-              <Typography
-                variant="h2"
-                align="center"
-                color="primary"
-                sx={{ 
-                  mb: 4, 
-                  fontWeight: 'bold',
-                  textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-                  position: 'relative',
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: -10,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: '100px',
-                    height: '3px',
-                    background: 'linear-gradient(45deg, #ff4081, #f50057)',
-                    borderRadius: '3px'
-                  }
-                }}
-              >
-                My Dearest Love
-              </Typography>
+            <Box sx={{ position: 'relative', zIndex: 1 }}>
+              <AnimatedHeader />
 
               <Box sx={{ 
                 textAlign: 'center', 
@@ -125,7 +126,8 @@ function App() {
                     mb: 4, 
                     fontStyle: 'italic',
                     position: 'relative',
-                    zIndex: 1
+                    zIndex: 1,
+                    color: '#666'
                   }}
                 >
                   "Every moment with you is a treasure I hold dear to my heart"
@@ -166,7 +168,8 @@ function App() {
                   paragraph
                   sx={{
                     fontSize: '1.1rem',
-                    lineHeight: 1.8
+                    lineHeight: 1.8,
+                    color: '#444'
                   }}
                 >
                   From the moment I met you, my life has been filled with endless joy and love.
@@ -179,7 +182,8 @@ function App() {
                   paragraph
                   sx={{
                     fontSize: '1.1rem',
-                    lineHeight: 1.8
+                    lineHeight: 1.8,
+                    color: '#444'
                   }}
                 >
                   I cherish every moment we spend together, whether we're laughing, talking,
@@ -234,7 +238,9 @@ function App() {
                           p: 1,
                           borderRadius: '5px',
                           '&:hover': {
-                            background: 'rgba(255, 64, 129, 0.1)'
+                            background: 'rgba(255, 64, 129, 0.1)',
+                            transform: 'translateX(5px)',
+                            transition: 'transform 0.3s ease'
                           }
                         }}>
                           <FaStar color="#ff4081" />
@@ -257,7 +263,8 @@ function App() {
                     variant="h6" 
                     sx={{ 
                       mb: 2,
-                      fontWeight: 'bold'
+                      fontWeight: 'bold',
+                      color: '#333'
                     }}
                   >
                     Will you be mine forever?
@@ -343,7 +350,7 @@ function App() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </Box>
           </Paper>
         </Container>
       </Box>
