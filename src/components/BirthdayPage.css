@@ -1,0 +1,84 @@
+.birthday-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.birthday-content {
+  width: 100%;
+  max-width: 700px;
+}
+
+.birthday-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 30px !important;
+  padding: 50px 40px;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+.countdown-box {
+  background: linear-gradient(135deg, rgba(255, 64, 129, 0.1) 0%, rgba(245, 0, 87, 0.1) 100%);
+  padding: 15px 30px;
+  border-radius: 20px;
+  margin: 20px auto;
+  display: inline-block;
+  border: 2px solid rgba(255, 64, 129, 0.3);
+}
+
+.wishes-text {
+  background: linear-gradient(135deg, rgba(255, 64, 129, 0.05) 0%, rgba(245, 0, 87, 0.05) 100%);
+  padding: 30px;
+  border-radius: 20px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.floating-emojis {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.emoji {
+  position: absolute;
+  font-size: 30px;
+  opacity: 0.7;
+}
+
+.emoji:nth-child(1) { top: 10%; left: 10%; }
+.emoji:nth-child(2) { top: 20%; right: 15%; }
+.emoji:nth-child(3) { top: 40%; left: 5%; }
+.emoji:nth-child(4) { top: 60%; right: 10%; }
+.emoji:nth-child(5) { bottom: 20%; left: 15%; }
+.emoji:nth-child(6) { bottom: 30%; right: 20%; }
+.emoji:nth-child(7) { top: 70%; left: 20%; }
+.emoji:nth-child(8) { top: 30%; right: 5%; }
+
+@media (max-width: 768px) {
+  .birthday-card {
+    padding: 30px 20px;
+  }
+  
+  .wishes-text {
+    padding: 20px;
+  }
+  
+  .emoji {
+    font-size: 20px;
+  }
+}
